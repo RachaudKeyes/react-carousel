@@ -6,3 +6,9 @@ import TEST_IMAGES from "./_testCommon.js";
 it("renders without crashing", function() {
   render(<Card />);
 });
+
+// snapshot test
+it("matches snapshot", function() {
+    const { asFragment } = render(<Card />);
+    expect(asFragment()).toMatchSnapshot();
+})

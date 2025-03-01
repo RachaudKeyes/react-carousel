@@ -4,8 +4,24 @@ import TEST_IMAGES from "./_testCommon.js";
 
 // smoke test
 it("renders without crashing", function() {
-  render(<Carousel />);
+  render(
+    <Carousel
+      photos={TEST_IMAGES}
+      title="images for testing"
+    />
+  )
 });
+
+// snapshot test
+it("matches snapshot", function() {
+  const { asFragment } = render(
+    <Carousel
+      photos={TEST_IMAGES}
+      title="images for testing"
+    />
+  );
+  expect(asFragment()).toMatchSnapshot();
+})
 
 it("works when you click on the left arrow", function() {
   const { container } = render(
